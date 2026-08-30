@@ -12,7 +12,7 @@ def label_check(label: str) -> bool:
 
 def save_upload(file_bytes: bytes, label:str | None = None) -> str:
 	if label and label_check(label):
-		raise_ValueError("Name Already Exists")
+		raise ValueError("Name Already Exists")
 	data_uid = str(uuid.uuid4())
 	path = settings.upload_dir/ f"{data_uid}.csv"
 	meta_path = settings.upload_dir / f"{data_uid}.json"
