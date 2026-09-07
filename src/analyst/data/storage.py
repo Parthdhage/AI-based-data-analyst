@@ -19,14 +19,14 @@ def save_upload(file_bytes: bytes, label:str | None = None) -> str:
 	path.write_bytes(file_bytes)
 	if label:
 		meta_path.write_text(json.dumps({"label": label}))
-	return data_uid 
+	return data_uid
 
 
 def load_dataset(data_uid: str) -> pd.DataFrame:
     path = settings.upload_dir/ f"{data_uid}.csv"
 
     if not path.exists():
-        raise FileNotFoundError(f"dataset not found: {data_uid}")
+        raise FileNotFoundError(f"Dataset not found: {data_uid}")
 
     return pd.read_csv(path)
 

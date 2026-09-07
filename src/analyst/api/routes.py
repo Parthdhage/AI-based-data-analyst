@@ -2,7 +2,6 @@ from fastapi import APIRouter, UploadFile, File, HTTPException
 from analyst.data.storage import save_upload, load_dataset
 from analyst.analysis.profiler import profile_dataset
 from analyst.core.config import settings
-from analyst.data.storage import save_upload
 
 router = APIRouter()
 
@@ -24,8 +23,8 @@ async def upload(file: UploadFile = File(...), label: str | None = None):
 @router.get("/datasets/{data_uid}/profile")
 async def get_profile(data_uid:str):
 	try:
-		dataset_uid = load_dataset(data_uid)
+		dataset = load_dataset(data_uid)
 	except FileNotFoundError as e:
 		raise HTTPException(status_code = 404, detail = str(e))
-	profile = profile_dataset(dataset_uid)
+	profile = profile_dataset(dataset)
 	return profile
