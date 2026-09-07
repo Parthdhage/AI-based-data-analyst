@@ -10,11 +10,13 @@ class Settings(BaseSettings):
         env_file_encoding="utf-8",
         extra="ignore",
     )
-
+	
     upload_dir: Path = Path("uploads")
     max_upload_mb: int = 50
     environment: Literal["development", "production"] = "development"
     log_level: str = "INFO"
+    groq_api_key: str
+    groq_model: str = "llama-3.3-70b-versatile"
 
     @property
     def max_upload_bytes(self) -> int:
