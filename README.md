@@ -30,9 +30,12 @@ Uploads are limited by the configured maximum size. The current API accepts CSV 
 Create an environment, install the project with its development extras, and copy the example configuration:
 
     python -m venv .venv
-    # Windows PowerShell
+Windows PowerShell:
+
     .venv\Scripts\Activate.ps1
-    # macOS or Linux
+
+macOS or Linux:
+
     source .venv/bin/activate
     python -m pip install -e ".[dev]"
     cp .env.example .env
